@@ -37,6 +37,6 @@ _run planenotifier.py_ <br>
 python planenotifier.py
 ```
 
-(This is what happens under the hood, when a plane's predicted path is in youre radius you will receive a notification)
+(This is what happens under the hood, when a plane's predicted path is in your radius you will receive a notification)
 
 ![demo](./images/demo.png?raw=false)
