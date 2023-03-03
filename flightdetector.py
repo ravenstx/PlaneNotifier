@@ -21,8 +21,17 @@ class Flightdetector:
         try:
             response = requests.get(
                 "https://data-cloud.flightradar24.com/zones/fcgi/feed.js?faa=1&bounds={}%2C{}%2C{}%2C{}".format(self.bounds['lat_max'], self.bounds['lat_min'], self.bounds['long_min'], self.bounds['long_max']), headers=headers, timeout=2)
-        except requests.exceptions.SSLError:
-            pass
+        except requests.exceptions.SSLError as err:
+            print(err)
+            return {}
+        except requests.exceptions.Timeout as err:
+            print("(Request Timeout)")
+            print(err)
+            return {}
+        except requests.exceptions.ConnectionError as err:
+            print("(No Connection)")
+            print(err)
+            return {}
         if response.status_code != 200:
             return {}
         response_dict = response.json()
